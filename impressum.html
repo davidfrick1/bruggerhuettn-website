@@ -15,16 +15,29 @@
   a{color:var(--accent); text-decoration:underline;}
   header{
     position:sticky; top:0; z-index:50;
-    background:var(--dark); color:var(--parchment);
-    padding:16px 6vw; display:flex; align-items:center; justify-content:space-between;
-    box-shadow:0 4px 20px rgba(0,0,0,0.12);
-    flex-wrap:wrap; gap:10px 20px;
+    background:var(--dark);
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    padding:6px 6vw;
+    box-shadow:0 4px 20px rgba(0,0,0,0.15);
   }
-  .back-link{color:var(--parchment); font-size:0.9rem; text-decoration:none;}
-  .back-link:hover{color:var(--accent);}
-  .header-nav{display:flex; gap:20px; flex-wrap:wrap;}
-  .header-nav a{color:var(--parchment); font-size:0.85rem; text-decoration:none; opacity:0.9;}
-  .header-nav a:hover{color:var(--accent); opacity:1;}
+  .logo-mark{grid-column:2; width:74px; height:74px; justify-self:center;}
+  .logo-mark img{width:100%; height:100%; object-fit:contain; display:block;}
+  .nav-left{grid-column:1; justify-self:start;}
+  .nav-right{grid-column:3; justify-self:end; display:flex; align-items:center; gap:22px;}
+  header nav{display:flex; gap:34px; align-items:center;}
+  header nav a{color:var(--parchment); font-size:0.85rem; font-weight:300; text-decoration:none; position:relative; padding-bottom:4px;}
+  header nav a::after{content:''; position:absolute; left:0; bottom:0; height:1px; width:0; background:var(--accent); transition:width 0.3s ease;}
+  header nav a:hover::after{width:100%;}
+  .nav-cta{background:var(--accent); color:var(--parchment) !important; padding:9px 18px; border-radius:10px; font-weight:300 !important;}
+  .nav-cta::after{display:none;}
+  .lang-switch{display:flex; align-items:center; background:rgba(250,248,245,0.14); border:1px solid rgba(250,248,245,0.35); border-radius:10px; padding:3px; font-family:'Fraunces', serif; font-size:0.76rem; letter-spacing:0.06em;}
+  .lang-btn{background:none; border:none; cursor:pointer; color:rgba(250,248,245,0.7); font-family:inherit; font-size:inherit; letter-spacing:inherit; padding:6px 14px; border-radius:7px; transition:background 0.25s ease, color 0.25s ease;}
+  .lang-btn.active{background:rgba(250,248,245,0.22); color:var(--parchment);}
+  .lang-btn:not(.active):hover{color:var(--parchment);}
+  @media(max-width:760px){ .lang-switch{display:none;} }
+  @media(max-width:600px){ .nav-left{display:none;} }
   main{max-width:760px; margin:0 auto; padding:56px 6vw 90px; line-height:1.75;}
   h1{font-size:2rem; margin-bottom:36px;}
   h2{font-size:1.25rem; margin:34px 0 10px; color:var(--dark);}
@@ -38,13 +51,20 @@
 </head>
 <body>
 
-<header>
-  <a href="index.html" class="back-link">&larr; Zurück zur Startseite</a>
-  <nav class="header-nav">
-    <a href="index.html#speisekarte">Speisekarte</a>
-    <a href="index.html#ueber">Über uns</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="datenschutz.html">Datenschutz</a>
+<header id="siteHeader">
+  <nav class="nav-left">
+    <a href="index.html#speisekarte" data-en="Menu">Speisekarte</a>
+    <a href="index.html#ueber" data-en="About us">Über uns</a>
+  </nav>
+  <a href="index.html" class="logo-mark" data-en-aria="Brugger Hütt'n, back to homepage" aria-label="Brugger Hütt'n, zur Startseite">
+    <img src="logo.png" data-en-alt="Brugger Hütt’n logo" alt="Brugger Hütt’n Logo">
+  </a>
+  <nav class="nav-right">
+    <div class="lang-switch" role="group" data-en-aria="Choose language" aria-label="Sprache wählen">
+      <button type="button" class="lang-btn active" data-lang="de">DE</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="index.html#reservieren" class="nav-cta" data-en="Reserve">Reservieren</a>
   </nav>
 </header>
 
@@ -127,6 +147,41 @@
 <footer>
   Brugger Hütt’n · Riegsee — <a href="index.html">Zurück zur Startseite</a>
 </footer>
+
+<script>
+  (function(){
+    var langBtns = document.querySelectorAll('.lang-btn');
+    var textTargets = document.querySelectorAll('[data-en]');
+    var altTargets = document.querySelectorAll('[data-en-alt]');
+    var ariaTargets = document.querySelectorAll('[data-en-aria]');
+
+    function setLang(lang){
+      langBtns.forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
+
+      textTargets.forEach(function(el){
+        if (!el.hasAttribute('data-de')) { el.setAttribute('data-de', el.textContent); }
+        var text = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-de');
+        if (text) el.textContent = text;
+      });
+
+      altTargets.forEach(function(el){
+        if (!el.hasAttribute('data-de-alt')) { el.setAttribute('data-de-alt', el.getAttribute('alt')); }
+        var alt = lang === 'en' ? el.getAttribute('data-en-alt') : el.getAttribute('data-de-alt');
+        if (alt) el.setAttribute('alt', alt);
+      });
+
+      ariaTargets.forEach(function(el){
+        if (!el.hasAttribute('data-de-aria')) { el.setAttribute('data-de-aria', el.getAttribute('aria-label')); }
+        var aria = lang === 'en' ? el.getAttribute('data-en-aria') : el.getAttribute('data-de-aria');
+        if (aria) el.setAttribute('aria-label', aria);
+      });
+    }
+
+    langBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){ setLang(btn.dataset.lang); });
+    });
+  })();
+</script>
 
 </body>
 </html>
