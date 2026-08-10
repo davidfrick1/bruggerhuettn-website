@@ -48,6 +48,9 @@
     display:flex; align-items:center; gap:8px;
   }
   .back-link:hover{color:var(--accent);}
+  .header-nav{display:flex; gap:20px; flex-wrap:wrap; align-items:center;}
+  .header-nav a{color:var(--parchment); font-size:0.85rem; text-decoration:none; opacity:0.9;}
+  .header-nav a:hover{color:var(--accent); opacity:1;}
   .header-title{
     color:var(--parchment);
     font-size:1.15rem;
@@ -187,6 +190,11 @@
 
 <header>
   <a href="index.html" class="back-link">&larr; Zurück zur Startseite</a>
+  <nav class="header-nav">
+    <a href="index.html#ueber">Über uns</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
   <div class="header-title">Brugger Hütt’n<span>Speisekarte</span></div>
 </header>
 
