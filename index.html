@@ -604,6 +604,7 @@
   .time-option:hover{background:var(--parchment);}
   .reserve-form .btn{width:100%; justify-content:center; margin-top:6px;}
   @media(max-width:820px){ .reserve{grid-template-columns:1fr;} .form-row{grid-template-columns:1fr;} }
+  @media(max-width:640px){ .reserve{padding:48px 4vw;} .reserve-form a[href^="tel"]{font-size:1.4rem !important; gap:8px !important; white-space:nowrap;} .reserve-form a[href^="tel"] svg{width:22px !important; height:22px !important;} }
 
   /* ---------- ANFAHRT ---------- */
   .location{
@@ -912,28 +913,24 @@
     setMobileMenu(!mobileMenu.classList.contains('open'));
   });
   mobileMenuOverlay.addEventListener('click', function(){ setMobileMenu(false); });
-  mobileMenu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(e){
-      var href = a.getAttribute('href');
-      if(href && href.startsWith('#')){
-        e.preventDefault();
-        setMobileMenu(false);
-        var target = document.querySelector(href);
-        if(target){ setTimeout(function(){ target.scrollIntoView({behavior:'smooth'}); }, 80); }
-      } else {
-        setMobileMenu(false);
-      }
-    });
-  });
+  function scrollToSection(id){
+    var target = document.querySelector(id);
+    if(!target) return;
+    var headerH = header.offsetHeight + 20;
+    var top = target.getBoundingClientRect().top + window.pageYOffset - headerH;
+    window.scrollTo({top: top, behavior: 'smooth'});
+  }
   document.querySelectorAll('a[href^="#"]').forEach(function(link){
     link.addEventListener('click', function(e){
       var id = link.getAttribute('href');
-      var target = document.querySelector(id);
-      if(target){
-        e.preventDefault();
-        var headerH = header.offsetHeight + 16;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - headerH;
-        window.scrollTo({top:top, behavior:'smooth'});
+      if(!document.querySelector(id)) return;
+      e.preventDefault();
+      var menuOpen = mobileMenu.classList.contains('open');
+      if(menuOpen){
+        setMobileMenu(false);
+        setTimeout(function(){ scrollToSection(id); }, 120);
+      } else {
+        scrollToSection(id);
       }
     });
   });
