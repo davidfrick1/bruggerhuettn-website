@@ -149,7 +149,9 @@
     padding:9px 18px;
     border-radius:3px;
     font-weight:300 !important;
+    display:inline-flex; align-items:center; gap:6px;
   }
+  .nav-cta svg{flex-shrink:0;}
   .nav-cta::after{display:none;}
   @media(max-width:760px){ .nav-left{display:none;} .nav-cta{display:none;} }
   @media(max-width:760px){
@@ -417,8 +419,7 @@
   .review-card{
     background:#fff;
     border-radius:3px;
-    padding:24px 24px 16px;
-    box-shadow:0 12px 30px rgba(43,36,32,0.10);
+    padding:20px 22px 12px;
     flex:0 0 320px;
     transition:opacity 0.45s ease, filter 0.45s ease, transform 0.45s ease;
   }
@@ -444,7 +445,7 @@
     margin:0 auto;
     text-align:left;
   }
-  .lage h2{font-size:2.2rem; margin-bottom:22px; color:var(--dark);}
+  .lage h2{font-size:2.2rem; margin-bottom:32px; color:var(--dark);}
   .lage p{font-size:1.12rem; line-height:1.8; margin-bottom:18px; color:var(--muted);}
   .lage-photo{
     aspect-ratio:4/3;
@@ -706,6 +707,10 @@
     <img src="logo.png" data-en-alt="Brugger Hütt’n logo" alt="Brugger Hütt’n Logo">
   </a>
   <nav class="nav-right">
+    <a href="tel:+4988473419886" class="nav-cta nav-cta-phone" aria-label="Anrufen">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Anrufen
+    </a>
     <a href="#reservieren" class="nav-cta">Reservieren</a>
   </nav>
 </header>
@@ -806,7 +811,6 @@
 
 <section class="lage reveal section-alt" id="lage">
   <div>
-    <p class="eyebrow" data-en="At Lake Riegsee">Am Riegsee</p>
     <h2 data-en="Your spot right by the water">Ihr Platz direkt am Wasser</h2>
     <p data-en="The view of Lake Riegsee is one of the most beautiful spots in the area, whether at sunset from the terrace or on a walk right along the shore.">Der Blick auf den Riegsee gehört zu den schönsten Ecken der Gegend, ob beim Sonnenuntergang von der Terrasse oder beim Spaziergang direkt am Ufer.</p>
     <p data-en="On the menu you'll find Bavarian and Central European classics like roast pork and wild duck, along with changing seasonal dishes and a freshly tapped beer or a glass of wine.">Auf der Karte stehen bayerische und mitteleuropäische Klassiker wie Schweinebraten und Wildente, dazu wechselnde Gerichte der Saison sowie ein frisch gezapftes Bier oder ein Glas Wein.</p>
@@ -837,8 +841,7 @@
 
 <section class="about reveal section-alt" id="ueber">
   <div>
-    <p class="eyebrow" data-en="About us">Über uns</p>
-    <h2 data-en="Home at Lake Riegsee">Zuhause am Riegsee</h2>
+    <h2>Über uns</h2>
     <p data-en="Located right on the grounds of Camping Brugger on Lake Riegsee, right by the water. Zsolt already worked here as a waiter from 2011 to 2015, before he and his wife Silvia took over the hut in 2015 and turned the simple snack bar into a home of their own.">Die Brugger Hütt'n liegt direkt auf dem Gelände vom Campingplatz Brugger am Riegsee, mitten am Wasser. Zsolt hat hier schon von 2011 bis 2015 gekellnert, ehe er und seine Frau Silvia die Hütte 2015 übernommen und aus der einfachen Vesperstube ihr eigenes Zuhause gemacht haben.</p>
     <p data-en="Both of them originally come from Hungary and bring their roots to the table: Bavarian hospitality meets Central European flavours, cooked with heart and always with a look beyond the traditional Bavarian plate.">Die beiden stammen ursprünglich aus Ungarn und lassen ihre Wurzeln in die Küche einfließen: bayerische Gastlichkeit trifft auf mitteleuropäische Aromen, mit Herzblut zubereitet und auch mal über den bayerischen Tellerrand hinausgeschaut.</p>
   </div>
@@ -851,8 +854,7 @@
     <span class="tag" data-en="Our team">Unser Team</span>
   </div>
   <div class="about-team-text">
-    <p class="eyebrow" data-en="Our team">Unser Team</p>
-    <h2 data-en="The faces behind it">Die Gesichter dahinter</h2>
+    <h2>Unser Team</h2>
     <p data-en="A close-knit team in the kitchen and at the counter makes sure every day, with heart, that you feel right at home with us.">Ein eingespieltes Team aus Küche und Service sorgt jeden Tag mit Herzblut dafür, dass Sie sich bei uns wie zuhause fühlen.</p>
   </div>
 </section>
