@@ -98,25 +98,14 @@
   /* ---------- NAV ---------- */
   header{
     position:fixed; top:0; left:0; right:0; z-index:50;
-    background:var(--dark);
+    background:var(--parchment);
     display:flex;
     align-items:center;
-    padding:10px 6vw;
-    transition:padding 0.4s ease, box-shadow 0.4s ease;
+    justify-content:center;
+    padding:14px 6vw;
+    border-bottom:1px solid rgba(43,36,32,0.12);
   }
-  header.scrolled{
-    padding:6px 6vw;
-    box-shadow:0 4px 20px rgba(0,0,0,0.15);
-  }
-  .logo-mark{
-    flex:0 0 auto;
-    width:60px; height:60px;
-    transition:width 0.3s ease, height 0.3s ease;
-  }
-  header.scrolled .logo-mark{width:50px; height:50px;}
-  .logo-mark img{width:100%; height:100%; object-fit:contain; display:block;}
-  .nav-center{flex:1; display:flex; justify-content:center; gap:40px;}
-  .nav-right{flex:0 0 auto;}
+  .nav-center{display:flex; gap:40px;}
   .logo{
     font-family:'Fraunces', serif;
     font-size:1.3rem;
@@ -124,23 +113,23 @@
     display:flex; align-items:baseline; gap:8px;
   }
   .logo span{font-family:'Fraunces', serif; font-weight:400; font-size:0.65rem; letter-spacing:0.2em; color:var(--accent);}
-  .nav-center a, .nav-right a{
-    color:var(--parchment);
+  .nav-center a{
+    color:var(--dark);
     font-size:1rem;
     font-weight:300;
     position:relative;
     padding-bottom:4px;
     display:inline-flex; align-items:center; gap:6px;
   }
-  .nav-center a::after, .nav-right a::after{
+  .nav-center a::after{
     content:'';
     position:absolute; left:0; bottom:0; height:1px; width:0;
-    background:var(--parchment);
+    background:var(--dark);
     transition:width 0.3s ease;
   }
-  .nav-center a:hover::after, .nav-right a:hover::after{width:100%;}
-  .nav-right a svg{flex-shrink:0;}
-  @media(max-width:760px){ .nav-center{display:none;} .nav-right{display:none;} }
+  .nav-center a:hover::after{width:100%;}
+  .nav-center a svg{flex-shrink:0;}
+  @media(max-width:760px){ .nav-center{display:none;} }
   @media(max-width:760px){
     header{padding:8px 4vw;}
     header.scrolled{padding:6px 4vw;}
@@ -151,7 +140,7 @@
   .burger-btn{
     display:none;
     background:none; border:none; padding:4px;
-    color:var(--parchment);
+    color:var(--dark);
     cursor:pointer;
     margin-left:auto;
   }
@@ -687,9 +676,6 @@
   <button type="button" class="burger-btn" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
     <svg id="burgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </button>
-  <a href="#" class="logo-mark" aria-label="Brugger Hütt’n, zur Startseite">
-    <img src="logo.png" alt="Brugger Hütt’n Logo">
-  </a>
   <nav class="nav-center">
     <a href="#speisekarte">Speisekarte</a>
     <a href="#ueber">Über uns</a>
@@ -729,8 +715,8 @@
 </section>
 
 <section class="closed-notice" id="geschlossen" style="background:var(--dark); color:var(--parchment); text-align:center; padding:28px 6vw;">
-  <h2 style="font-family:'Fraunces', serif; font-weight:300; font-size:1.4rem; margin-bottom:8px;">Wir haben Winterpause</h2>
-  <p style="font-size:0.95rem; line-height:1.7; max-width:480px; margin:0 auto; opacity:0.8;">Im neuen Jahr sind wir wieder für Sie da.<br>Wir freuen uns schon jetzt auf Ihren nächsten Besuch bei uns am Riegsee.</p>
+  <h2 style="font-family:'Fraunces', serif; font-weight:300; font-size:1.6rem; margin-bottom:10px;">Wir haben Winterpause</h2>
+  <p style="font-size:1.05rem; line-height:1.8; max-width:520px; margin:0 auto; opacity:0.85;">Im neuen Jahr sind wir wieder für Sie da.<br>Vielen Dank für eine schöne Saison, wir freuen uns auf Ihren nächsten Besuch am Riegsee.</p>
 </section>
 
 <div class="section-divider"></div>
@@ -903,14 +889,6 @@
 </footer>
 
 <script>
-  const header = document.getElementById('siteHeader');
-  function syncHeaderScrolled(){
-    header.classList.toggle('scrolled', window.scrollY > 40);
-  }
-  syncHeaderScrolled();
-  window.addEventListener('scroll', syncHeaderScrolled);
-  window.addEventListener('pageshow', syncHeaderScrolled);
-
   const burgerBtn = document.getElementById('burgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
