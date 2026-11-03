@@ -91,7 +91,7 @@
     background:rgba(193,104,46,0.12);
     color:var(--accent);
     border:1px dashed var(--accent);
-    border-radius:6px;
+    border-radius:3px;
     padding:3px 9px;
     margin-top:6px;
   }
@@ -355,7 +355,7 @@
     aspect-ratio:5/4;
     max-width:420px;
     margin:0 auto;
-    border-radius:6px;
+    border-radius:3px;
     overflow:hidden;
     position:relative;
     box-shadow:0 20px 40px rgba(43,36,32,0.18);
@@ -449,7 +449,7 @@
   .lage p{font-size:1.12rem; line-height:1.8; margin-bottom:18px; color:var(--muted);}
   .lage-photo{
     aspect-ratio:4/3;
-    border-radius:6px;
+    border-radius:3px;
     overflow:hidden;
     position:relative;
     box-shadow:0 20px 40px rgba(43,36,32,0.18);
@@ -519,7 +519,7 @@
   }
   .dish{
     background:#fff;
-    border-radius:8px;
+    border-radius:3px;
     overflow:hidden;
     box-shadow:0 12px 30px rgba(43,36,32,0.10);
     transition:transform 0.3s ease, box-shadow 0.3s ease;
@@ -558,7 +558,7 @@
   .reserve p{font-size:1.12rem; line-height:1.75; color:var(--muted); margin-bottom:16px;}
   .reserve-form{
     background:#fff;
-    border-radius:8px;
+    border-radius:3px;
     padding:38px;
     box-shadow:0 22px 50px rgba(43,36,32,0.12);
     position:relative;
@@ -637,7 +637,7 @@
     font-size:0.92rem;
   }
   .map-box{
-    border-radius:8px;
+    border-radius:3px;
     overflow:hidden;
     min-height:320px;
     max-height:420px;
@@ -650,7 +650,7 @@
     font-size:0.72rem; color:#fff; text-align:center;
     background:rgba(43,36,32,0.55);
     padding:6px 16px;
-    border-radius:20px;
+    border-radius:3px;
   }
   @media(max-width:820px){ .location{grid-template-columns:1fr;} }
 
@@ -863,8 +863,7 @@
 
 <section class="reserve reveal" id="reservieren">
   <div>
-    <p class="eyebrow" data-en="Reservation">Reservierung</p>
-    <h2 data-en="Reserve your table">Sichern Sie sich Ihren Platz</h2>
+    <h2>Sichern Sie sich Ihren Platz</h2>
     <p data-en="We're happy to take your reservation directly over the phone.">Wir nehmen Ihre Reservierung gerne direkt am Telefon entgegen.</p>
   </div>
   <div class="reserve-form" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:12px;">
@@ -881,8 +880,7 @@
 
 <section class="location reveal section-alt" id="anfahrt">
   <div>
-    <p class="eyebrow" data-en="Directions & opening hours">Anfahrt & Öffnungszeiten</p>
-    <h2 data-en="Right on Lake Riegsee">Direkt am Riegsee</h2>
+    <h2>Anfahrt und Öffnungszeiten</h2>
     <p style="color:var(--muted); line-height:1.75; font-size:1.08rem;" data-en="Seestraße 2, 82418 Hofheim, right by the lake at Camping Brugger. Signposted from the village centre, parking directly at the hut.">Seestraße 2, 82418 Hofheim, direkt am See beim Campingplatz Brugger. Ausgeschildert ab dem Ortskern, Parkplätze direkt an der Hütte.</p>
     <div class="hours">
       <div class="hours-row"><span data-en="Monday, Wednesday – Saturday">Montag, Mittwoch – Samstag</span><span>11:00 – 22:00</span></div>
@@ -1019,6 +1017,7 @@
         const m = measure();
         track.style.transition = 'none';
         track.style.transform = 'translateX(' + (-position * m.step) + 'px)';
+        updateEdgeClasses();
         void track.offsetHeight;
         track.style.transition = '';
       }
