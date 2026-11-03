@@ -55,6 +55,7 @@
   ]
 }
 </script>
+<link rel="preload" as="image" href="img/image-1.jpg" imagesrcset="img/hero-mobile.jpg 800w, img/image-1.jpg 1446w" imagesizes="100vw">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -242,7 +243,7 @@
     text-shadow:0 3px 18px rgba(0,0,0,0.5);
     white-space:nowrap;
   }
-  @media(max-width:640px){ .hero-content h1{white-space:normal;} .hero-content p{font-size:1.05rem;} .hero-illustration img{filter:none;} }
+  @media(max-width:640px){ .hero-content h1{white-space:normal;} .hero-content p{font-size:1.05rem;} .hero-illustration img{filter:none;} .hero-illustration::after{background:linear-gradient(180deg, rgba(24,18,12,0.35) 0%, rgba(24,18,12,0.5) 50%, rgba(24,18,12,0.65) 100%);} }
   .hero-content h1 em{
     font-style:normal;
     color:var(--parchment);
@@ -708,7 +709,7 @@
 
 <section class="hero">
   <div class="hero-illustration">
-    <img src="img/image-1.jpg" data-en-alt="Dining room of the Brugger Hütt’n" alt="Gastraum der Brugger Hütt’n">
+    <img src="img/image-1.jpg" srcset="img/hero-mobile.jpg 800w, img/image-1.jpg 1446w" sizes="100vw" width="1446" height="1088" fetchpriority="high" data-en-alt="Dining room of the Brugger Hütt’n" alt="Gastraum der Brugger Hütt’n">
   </div>
   <div class="hero-content">
     <h1>Gemütlichkeit, direkt am Riegsee</h1>
@@ -769,7 +770,7 @@
   <div class="highlights-row">
     <div class="highlight-card">
       <div class="highlight-photo">
-        <img src="img/image-2.jpg" loading="lazy" data-en-alt="Skewered fish grilling over an open fire" alt="Steckerlfisch am offenen Feuer">
+        <img src="img/image-2.jpg" loading="lazy" decoding="async" width="1200" height="1500" data-en-alt="Skewered fish grilling over an open fire" alt="Steckerlfisch am offenen Feuer">
       </div>
       <div class="highlight-body">
         <p class="eyebrow" data-en="Every Saturday">Jeden Samstag</p>
@@ -798,7 +799,7 @@
     <p data-en="Whether you're out cycling, coming over from the campsite, or simply dropping by on a whim: everyone is welcome here, including larger groups.">Ob Sie mit dem Rad unterwegs sind, vom Campingplatz herüberkommen oder einfach spontan vorbeischauen: bei uns ist jeder willkommen, auch größere Gruppen.</p>
   </div>
   <div class="lage-photo">
-    <img src="img/image-3.jpg" loading="lazy" data-en-alt="View of Lake Riegsee" alt="Blick auf den Riegsee">
+    <img src="img/image-3.jpg" loading="lazy" decoding="async" width="1449" height="1085" data-en-alt="View of Lake Riegsee" alt="Blick auf den Riegsee">
   </div>
 </section>
 
@@ -826,10 +827,10 @@
     <p data-en="Both of them originally come from Hungary and bring their roots to the table: Bavarian hospitality meets Central European flavours, cooked with heart and always with a look beyond the traditional Bavarian plate.">Die beiden stammen ursprünglich aus Ungarn und lassen ihre Wurzeln in die Küche einfließen: bayerische Gastlichkeit trifft auf mitteleuropäische Aromen, mit Herzblut zubereitet und auch mal über den bayerischen Tellerrand hinausgeschaut.</p>
   </div>
   <div class="about-photo">
-    <img src="img/image-4.jpg" loading="lazy" data-en-alt="The hosts of the Brugger Hütt’n" alt="Die Gastgeber der Brugger Hütt’n">
+    <img src="img/image-4.jpg" loading="lazy" decoding="async" width="900" height="1200" data-en-alt="The hosts of the Brugger Hütt’n" alt="Die Gastgeber der Brugger Hütt’n">
   </div>
   <div class="about-photo team-photo">
-    <img src="img/image-5.jpg" loading="lazy" data-en-alt="The Brugger Hütt'n team" alt="Das Team der Brugger Hütt'n">
+    <img src="img/image-5.jpg" loading="lazy" decoding="async" width="1448" height="1086" data-en-alt="The Brugger Hütt'n team" alt="Das Team der Brugger Hütt'n">
   </div>
   <div class="about-team-text">
     <h2>Unser Team</h2>
@@ -858,7 +859,7 @@
 
 <section class="location reveal section-alt" id="anfahrt">
   <div>
-    <h2>Anfahrt und Öffnungszeiten</h2>
+    <h2>Öffnungszeiten</h2>
     <p style="color:var(--muted); line-height:1.75; font-size:1.08rem;" data-en="Seestraße 2, 82418 Hofheim, right by the lake at Camping Brugger. Signposted from the village centre, parking directly at the hut.">Seestraße 2, 82418 Hofheim, direkt am See beim Campingplatz Brugger. Ausgeschildert ab dem Ortskern, Parkplätze direkt an der Hütte.</p>
     <div class="hours">
       <div class="hours-row"><span data-en="Monday, Wednesday – Saturday">Montag, Mittwoch – Samstag</span><span>11:00 – 22:00</span></div>
