@@ -43,7 +43,7 @@
     .nav-center{display:none;}
     header{padding:16px 4vw; justify-content:center;}
     .header-logo{position:static; transform:none;}
-    .header-logo img{height:48px;}
+    .header-logo img{height:56px;}
   }
 
   .burger-btn{
@@ -102,7 +102,13 @@
     text-decoration:none;
   }
   .mobile-menu-links a .arrow{color:var(--accent); font-size:1.15rem;}
-  header.menu-open{z-index:52;}
+  @media(max-width:760px){
+    header.menu-open{z-index:52;}
+    header.menu-open .burger-btn{z-index:53;}
+    header.menu-open #burgerIcon line:nth-child(1){transform:translateY(6px) rotate(45deg); transform-origin:center;}
+    header.menu-open #burgerIcon line:nth-child(2){opacity:0;}
+    header.menu-open #burgerIcon line:nth-child(3){transform:translateY(-6px) rotate(-45deg); transform-origin:center;}
+  }
   @media(min-width:761px){ .mobile-menu, .mobile-menu-overlay{display:none !important;} }
 
   main{max-width:760px; margin:0 auto; padding:56px 6vw 90px; line-height:1.75;}
@@ -153,7 +159,7 @@
 <header id="siteHeader">
   <a href="index.html" class="header-logo"><img src="logo.png" alt="Brugger Hütt’n"></a>
   <button type="button" class="burger-btn" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
-    <svg id="burgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    <svg id="burgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6" style="transition:transform 0.3s ease, opacity 0.3s ease"></line><line x1="3" y1="12" x2="21" y2="12" style="transition:transform 0.3s ease, opacity 0.3s ease"></line><line x1="3" y1="18" x2="21" y2="18" style="transition:transform 0.3s ease, opacity 0.3s ease"></line></svg>
   </button>
   <nav class="nav-center">
     <a href="index.html#speisekarte">Speisekarte</a>
