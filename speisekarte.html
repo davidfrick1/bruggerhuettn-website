@@ -60,7 +60,7 @@
   }
   .nav-center a:hover::after{width:100%;}
   .nav-center a svg{flex-shrink:0;}
-  @media(max-width:760px){ .nav-center{display:none;} header{padding:8px 4vw;} .header-logo{left:4vw;} .header-logo img{height:44px;} }
+  @media(max-width:760px){ .nav-center{display:none;} header{padding:8px 4vw;} .header-logo{left:auto; right:4vw;} .header-logo img{height:44px;} }
 
   .burger-btn{
     display:none;
@@ -69,7 +69,7 @@
     color:var(--dark);
     cursor:pointer;
   }
-  @media(max-width:760px){ .burger-btn{display:flex; align-items:center; right:4vw;} }
+  @media(max-width:760px){ .burger-btn{display:flex; align-items:center; right:auto; left:4vw;} }
 
   .mobile-menu-overlay{
     position:fixed; inset:0;

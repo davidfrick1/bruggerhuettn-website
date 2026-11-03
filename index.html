@@ -135,7 +135,7 @@
   @media(max-width:760px){
     header{padding:8px 4vw;}
     header.scrolled{padding:6px 4vw;}
-    .header-logo{left:4vw;}
+    .header-logo{left:auto; right:4vw;}
     .header-logo img{height:44px;}
     .hero-buttons{flex-direction:column; align-items:center;}
     .hero-buttons .btn{text-align:center; min-width:235px;}
@@ -148,7 +148,7 @@
     cursor:pointer;
     position:absolute; right:6vw; top:50%; transform:translateY(-50%);
   }
-  @media(max-width:760px){ .burger-btn{display:flex; align-items:center; right:4vw;} }
+  @media(max-width:760px){ .burger-btn{display:flex; align-items:center; right:auto; left:4vw;} }
 
   .mobile-menu-overlay{
     position:fixed; inset:0;
@@ -242,7 +242,7 @@
     text-shadow:0 3px 18px rgba(0,0,0,0.5);
     white-space:nowrap;
   }
-  @media(max-width:640px){ .hero-content h1{white-space:normal;} .hero-content p{font-size:1.05rem;} }
+  @media(max-width:640px){ .hero-content h1{white-space:normal;} .hero-content p{font-size:1.05rem;} .hero-illustration img{filter:none;} }
   .hero-content h1 em{
     font-style:normal;
     color:var(--parchment);
