@@ -133,10 +133,10 @@
   .nav-center a svg{flex-shrink:0;}
   @media(max-width:760px){ .nav-center{display:none;} }
   @media(max-width:760px){
-    header{padding:12px 4vw;}
-    header.scrolled{padding:10px 4vw;}
+    header{padding:18px 4vw;}
+    header.scrolled{padding:14px 4vw;}
     .header-logo{left:auto; right:4vw;}
-    .header-logo img{height:44px;}
+    .header-logo img{height:48px;}
     .hero-buttons{flex-direction:column; align-items:center;}
     .hero-buttons .btn{text-align:center; min-width:235px;}
   }
@@ -163,7 +163,7 @@
     position:fixed; top:0; left:0; bottom:0;
     width:80%; max-width:340px;
     background:#F2F0EB;
-    z-index:49;
+    z-index:51;
     display:flex; flex-direction:column;
     padding:22px 7vw 32px;
     box-shadow:10px 0 40px rgba(20,16,12,0.25);
@@ -197,7 +197,7 @@
     text-decoration:none;
   }
   .mobile-menu-links a .arrow{color:var(--accent); font-size:1.15rem;}
-  @media(max-width:760px){ header.menu-open{opacity:0; visibility:hidden; pointer-events:none; transition:opacity 0.2s ease, visibility 0.2s;} }
+  @media(max-width:760px){ header.menu-open{z-index:50;} }
   @media(min-width:761px){ .mobile-menu, .mobile-menu-overlay{display:none !important;} }
 
   /* ---------- HERO ---------- */
@@ -698,12 +698,7 @@
 
 <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-head">
-    <button type="button" class="panel-toggle" id="mobileMenuClose" aria-label="Menü schließen">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <nav class="mobile-menu-links">
+  <nav class="mobile-menu-links" style="padding-top:80px;">
     <a href="#speisekarte" data-en="Menu"><span>Speisekarte</span><span class="arrow">→</span></a>
     <a href="#ueber" data-en="About us"><span>Über uns</span><span class="arrow">→</span></a>
     <a href="#anfahrt" data-en="Opening hours"><span>Öffnungszeiten</span><span class="arrow">→</span></a>
@@ -903,19 +898,16 @@
   const burgerBtn = document.getElementById('burgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-  const mobileMenuClose = document.getElementById('mobileMenuClose');
   function setMobileMenu(open){
     mobileMenu.classList.toggle('open', open);
     mobileMenuOverlay.classList.toggle('open', open);
     header.classList.toggle('menu-open', open);
-    mobileMenuClose.classList.toggle('is-x', open);
     burgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     document.documentElement.style.overflow = open ? 'hidden' : '';
   }
   burgerBtn.addEventListener('click', function(){
     setMobileMenu(!mobileMenu.classList.contains('open'));
   });
-  mobileMenuClose.addEventListener('click', function(){ setMobileMenu(false); });
   mobileMenuOverlay.addEventListener('click', function(){ setMobileMenu(false); });
   mobileMenu.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){ setMobileMenu(false); });

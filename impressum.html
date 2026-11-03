@@ -41,7 +41,7 @@
   .nav-center a svg{flex-shrink:0;}
   @media(max-width:760px){
     .nav-center{display:none;}
-    header{padding:12px 4vw;}
+    header{padding:18px 4vw;}
     .header-logo{left:auto; right:4vw;}
     .header-logo img{height:44px;}
   }
@@ -102,7 +102,7 @@
     text-decoration:none;
   }
   .mobile-menu-links a .arrow{color:var(--accent); font-size:1.15rem;}
-  header.menu-open{opacity:0; visibility:hidden; pointer-events:none; transition:opacity 0.2s ease, visibility 0.2s;}
+  header.menu-open{z-index:50;}
   @media(min-width:761px){ .mobile-menu, .mobile-menu-overlay{display:none !important;} }
 
   main{max-width:760px; margin:0 auto; padding:56px 6vw 90px; line-height:1.75;}
@@ -168,12 +168,7 @@
 
 <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-head">
-    <button type="button" class="panel-toggle" id="mobileMenuClose" aria-label="Menü schließen">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <nav class="mobile-menu-links">
+  <nav class="mobile-menu-links" style="padding-top:80px;">
     <a href="index.html#speisekarte"><span>Speisekarte</span><span class="arrow">→</span></a>
     <a href="index.html#ueber"><span>Über uns</span><span class="arrow">→</span></a>
     <a href="index.html#anfahrt"><span>Öffnungszeiten</span><span class="arrow">→</span></a>
@@ -356,19 +351,16 @@
     var burgerBtn = document.getElementById('burgerBtn');
     var mobileMenu = document.getElementById('mobileMenu');
     var mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-    var mobileMenuClose = document.getElementById('mobileMenuClose');
     function setMobileMenu(open){
       mobileMenu.classList.toggle('open', open);
       mobileMenuOverlay.classList.toggle('open', open);
       header.classList.toggle('menu-open', open);
-      mobileMenuClose.classList.toggle('is-x', open);
       burgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.documentElement.style.overflow = open ? 'hidden' : '';
     }
     burgerBtn.addEventListener('click', function(){
       setMobileMenu(!mobileMenu.classList.contains('open'));
     });
-    mobileMenuClose.addEventListener('click', function(){ setMobileMenu(false); });
     mobileMenuOverlay.addEventListener('click', function(){ setMobileMenu(false); });
     mobileMenu.querySelectorAll('a').forEach(function(a){
       a.addEventListener('click', function(){ setMobileMenu(false); });
