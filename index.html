@@ -300,7 +300,7 @@
   section{
     padding:76px 4vw;
     position:relative;
-    scroll-margin-top:84px;
+    scroll-margin-top:96px;
     background:var(--parchment);
   }
   section.section-alt{
@@ -911,7 +911,17 @@
   });
   mobileMenuOverlay.addEventListener('click', function(){ setMobileMenu(false); });
   mobileMenu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ setMobileMenu(false); });
+    a.addEventListener('click', function(e){
+      var href = a.getAttribute('href');
+      if(href && href.startsWith('#')){
+        e.preventDefault();
+        setMobileMenu(false);
+        var target = document.querySelector(href);
+        if(target){ setTimeout(function(){ target.scrollIntoView({behavior:'smooth'}); }, 80); }
+      } else {
+        setMobileMenu(false);
+      }
+    });
   });
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
