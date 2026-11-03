@@ -42,16 +42,18 @@
   @media(max-width:760px){
     .nav-center{display:none;}
     header{padding:8px 4vw;}
+    .header-logo{left:4vw;}
+    .header-logo img{height:44px;}
   }
 
   .burger-btn{
     display:none;
-    position:absolute; left:6vw; top:50%; transform:translateY(-50%);
+    position:absolute; right:6vw; top:50%; transform:translateY(-50%);
     background:none; border:none; padding:4px;
     color:var(--dark);
     cursor:pointer;
   }
-  @media(max-width:760px){ .burger-btn{display:flex; align-items:center;} }
+  @media(max-width:760px){ .burger-btn{display:flex; align-items:center; right:4vw;} }
 
   .mobile-menu-overlay{
     position:fixed; inset:0;

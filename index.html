@@ -135,6 +135,8 @@
   @media(max-width:760px){
     header{padding:8px 4vw;}
     header.scrolled{padding:6px 4vw;}
+    .header-logo{left:4vw;}
+    .header-logo img{height:44px;}
     .hero-buttons{flex-direction:column; align-items:center;}
     .hero-buttons .btn{text-align:center; min-width:235px;}
   }
@@ -144,9 +146,9 @@
     background:none; border:none; padding:4px;
     color:var(--dark);
     cursor:pointer;
-    margin-left:auto;
+    position:absolute; right:6vw; top:50%; transform:translateY(-50%);
   }
-  @media(max-width:760px){ .burger-btn{display:flex; align-items:center;} }
+  @media(max-width:760px){ .burger-btn{display:flex; align-items:center; right:4vw;} }
 
   .mobile-menu-overlay{
     position:fixed; inset:0;
